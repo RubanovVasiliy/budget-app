@@ -6,13 +6,12 @@ namespace budget_app.Pages;
 public partial class Spending : IDisposable
 {
     [Inject] MyDbContext Context { get; set; }
-    private List<Record>? Records { get; set; }
+    private IEnumerable<Record>? Records { get; set; }
     private Record? ActiveRecord { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
         Records = await Context.GetAllRecords();
-        Records.Reverse();
         Context.SavedChanges += Context_SavedChanges;
     }
 

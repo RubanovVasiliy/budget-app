@@ -26,12 +26,18 @@ namespace budget_app.Pages.Components.Records
         private async void AddRecord()
         {
             if (Description == "") return;
+
+            if (Category != RecordCategory.Salary)
+            {
+                Cost *= -1;
+            }
+
             var project = new Record()
             {
                 Description = Description,
                 Category = Category,
                 Cost = Cost,
-                Date = Date,
+                Date = Date.ToUniversalTime(),
                 UserId = UserId
             };
             await Context.CreateRecord(project);
