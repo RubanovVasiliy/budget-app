@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace budget_app.Pages.Components.Records
 {
-    public partial class AddAndUpdateRecord
+    public partial class CreateRecord
     {
         [Inject] MyDbContext Context { get; set; }
         public Guid UserId { get; set; } = new();

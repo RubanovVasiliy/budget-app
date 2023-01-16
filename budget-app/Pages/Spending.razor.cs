@@ -20,7 +20,6 @@ public partial class Spending : IDisposable
     private async void Context_SavedChanges(object? sender, Microsoft.EntityFrameworkCore.SavedChangesEventArgs e)
     {
         Records = await Context.GetAllRecords();
-        Records.Reverse();
         await InvokeAsync(StateHasChanged);
     }
 
