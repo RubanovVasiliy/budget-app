@@ -40,10 +40,19 @@ else
                 {
                     <tr @onclick="() => { OnRecordClick.InvokeAsync(record); }">
                         <td>
-                            <input class="form-control" type="edit" @bind="@record.Description" id="Description" placeholder="@record.Description"/>
+                            <input class="form-control" type="edit"
+                                   @bind="@record.Description"
+                                   id="Description"
+                                   placeholder="@record.Description"
+                                   onfocusout="@(async () => await UpdateRecord.InvokeAsync(record))"/>
                         </td>
                         <td>
-                            <select class="form-control" type="edit" @bind="@record.Category" id="Category" placeholder="@record.Category">
+                            <select class="form-control"
+                                    type="edit"
+                                    @bind="@record.Category"
+                                    id="Category"
+                                    placeholder="@record.Category"
+                                    onfocusout="@(async () => await UpdateRecord.InvokeAsync(record))" >
                                 @foreach (var category in Enum.GetNames(typeof(RecordCategory)))
                                 {
                                     <option value="@category">@category</option>
@@ -51,10 +60,16 @@ else
                             </select>
                         </td>
                         <td>
-                            <input class="form-control" type="edit" @bind="@record.Cost" id="Cost" placeholder="@record.Cost"/>
+                            <input class="form-control"
+                                   type="edit"
+                                   @bind="@record.Cost"
+                                   id="Cost"
+                                   placeholder="@record.Cost"
+                                   onfocusout="@(async () => await UpdateRecord.InvokeAsync(record))"/>
                         </td>
                         <td class="col-2">
-                            <button class="btn btn-outline-danger" @onclick="@(async () => await DeleteRecord.InvokeAsync(record))">Remove</button>
+                            <button class="btn btn-outline-danger"
+                                    @onclick="@(async () => await DeleteRecord.InvokeAsync(record))">Remove</button>
                         </td>
                     </tr>
                 }
@@ -94,4 +109,8 @@ else
         text-indent: 1px;
         text-overflow: '';
     }
+    select { 
+        text-align-last: left; 
+    }
+   
 </style>
