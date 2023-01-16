@@ -1,0 +1,37 @@
+@using budget_app.Data
+<div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-4 shadow">
+            <div class="modal-header p-5 pb-4 border-bottom-0">
+                <h1 class="fw-bold mb-0 fs-2">Add operation</h1>
+            </div>
+            <div class="modal-body p-5 pt-0">
+                <div class="">
+                    <div class="mb-3">
+                        <input class="form-control" @bind="Description" type="text" id="Description" placeholder="Description" />
+                        <div class="invalid-feedback">
+                            Please provide a valid description.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <select class="form-select" @bind="Category">
+                            @foreach (var category in Enum.GetNames(typeof(RecordCategory)))
+                            {
+                                <option value="@category">@category</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control" @bind="Cost" type="number" id="Cost" />
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control" @bind="Date" type="date" id="Date" />
+                    </div>
+                    <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" @onclick="AddRecord">Add</button>
+                    <button class="w-100 mb-2 btn btn-lg rounded-3 btn-light" @onclick="Clear">Clear</button>
+                    <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

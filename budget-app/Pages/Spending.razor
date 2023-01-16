@@ -1,0 +1,26 @@
+﻿@page "/spending"
+@using budget_app.Pages.Components.Records
+<div class="text-center">
+
+    <PageTitle>Spending</PageTitle>
+
+    <h1>Spending</h1>
+
+    <p>This component demonstrates fetching data from a service.</p>
+    <h4>@ActiveRecord?.Id @ActiveRecord?.Description @ActiveRecord?.Date @ActiveRecord?.Cost</h4>
+
+    <AddAndUpdateRecord ActiveRecord="ActiveRecord" />
+    <ViewRecords DeleteRecord="async record => await Context.DeleteRecord(record.Id)"
+                 UpdateRecord="async record => await Context.UpdateRecord(record)"
+                 OnRecordClick="record => SelectRecord(record.Id)" Records="Records" />
+</div>
+<footer class="py-3 my-4">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+    </ul>
+    <p class="text-center text-muted">© 2023 Company, Inc</p>
+</footer>
