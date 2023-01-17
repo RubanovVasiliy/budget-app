@@ -16,7 +16,7 @@ else
             </div>
             <div class="col">
                 <div class="alert alert-danger p-3 " role="alert">
-                    Expense: @Records.Where(item => item.Cost < 0).Sum(item => item.Cost)
+                    Expense: @Math.Abs(Records.Where(item => item.Cost < 0).Sum(item => item.Cost))
                 </div>
             </div>
             <div class="col">
