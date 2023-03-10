@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+
+  db:
+    image: postgres:13-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: budget
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    networks:
+      - web
+
+  app:
+    build: .
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "5000:80"
+    networks:
+      - web
+      
+networks:
+  web:
+    driver: bridge
